@@ -19,6 +19,7 @@ i {
 }
 
 body {
+    background-color: gainsboro;
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -44,22 +45,44 @@ button {
     background-color: gainsboro;
 }
 
+.pfp {
+    grid-area: pfp;
+    border-radius: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.sm {
+    width: 2rem;
+}
+
+.lg {
+    width: 4rem;
+}
+
 #top-bar {
-    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 1rem 4rem;
     grid-area: header;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: 2fr auto auto;
+    grid-template-areas: 
+        "search search bell account account"
+        "welcome welcome new upload share";
     justify-items: center;
     align-items: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #search {
-    grid-column: 1 / span 3;
+    grid-area: search;
+    justify-self: baseline;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -70,14 +93,46 @@ button {
     border: none;
     background-color: gainsboro;
     border-radius: 1rem;
-    width: 80%;
+    width: 90%;
 }
 
 #account {
-    grid-column: 1 /span 2;
+    grid-area: account;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#account img {
+    margin-right: .5rem;
+}
+
+#welcome {
+    justify-self: baseline;
+    grid-area: welcome;
+    display: grid;
+    grid-template-areas: "pfp hi"
+                         "pfp name";
+    gap: 1rem;
+}
+
+#welcome img {
+    grid-area: pfp;
+}
+
+#welcome #hi {
+    grid-area: hi;
+}
+
+#welcome #name {
+    grid-area: name;
 }
 
 #sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     grid-area: sidebar;
@@ -92,6 +147,7 @@ button {
     display: flex;
     font-size: 1.5rem;
     margin: 1rem;
+    align-items: center;
 }
 
 #sidebar i {
@@ -100,5 +156,73 @@ button {
 
 #main-content {
     grid-area: main;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
 }
 
+#card-holder {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: .5rem;
+    padding: 1rem;
+    border-left: .5rem solid orange;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.title-sm {
+    font-weight: bold;
+}
+
+#icon-holder {
+    align-self: flex-end;
+    margin-top: 2rem;
+}
+#icon-holder i {
+    margin-left: 1rem;
+}
+
+
+.side-card{
+    margin: 1rem 0;
+    background-color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+#announce hr {
+    color: gainsboro;
+
+}
+
+.topic {
+    padding: 1rem;
+}
+
+.profile {
+    grid-template-columns: 2rem auto;
+    grid-template-rows: auto;
+    display: grid;
+    column-gap: 1rem;
+    grid-template-areas: 
+        "pfp at"
+        "pfp name";
+    justify-items: baseline;
+}
